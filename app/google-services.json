@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1042984054044",
+    "project_id": "car-info-app-81fe3",
+    "storage_bucket": "car-info-app-81fe3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042984054044:android:8ee9d4ee4dff0956ddded9",
+        "android_client_info": {
+          "package_name": "com.example.carinfoapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASGEtt48tX_xf7cF4ZZW445U-6QuAxfkk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
