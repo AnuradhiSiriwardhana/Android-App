@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "Car Info App"
 include(":app")
 include(":crudrealtimeadmin")
+include(":rmvadmin")

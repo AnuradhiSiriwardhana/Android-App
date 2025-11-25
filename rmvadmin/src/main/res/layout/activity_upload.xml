@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".UploadActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- Core Details -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vehicle Details" 
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+        <EditText
+            android:id="@+id/etOwnerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Owner Name"/>
+
+        <EditText
+            android:id="@+id/etVehicleNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Vehicle Number"/>
+
+        <EditText
+            android:id="@+id/etVehicleModel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Vehicle Model"/>
+            
+        <EditText
+            android:id="@+id/etChassisNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Chassis Number"/>
+
+        <EditText
+            android:id="@+id/etRegistrationDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Registration Date (YYYY-MM-DD)"/>
+
+        <!-- License Details -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="License Details"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"/>
+
+        <EditText
+            android:id="@+id/etLicenseNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="License Number"/>
+
+        <EditText
+            android:id="@+id/etLicenseExpiry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="License Expiry Date (YYYY-MM-DD)"/>
+
+        <Button
+            android:id="@+id/btnUploadLicense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upload License Photo"/>
+
+        <ImageView
+            android:id="@+id/ivLicensePreview"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <!-- Insurance Details -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Insurance Details"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"/>
+
+        <EditText
+            android:id="@+id/etInsuranceNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Insurance Number"/>
+
+        <EditText
+            android:id="@+id/etInsuranceExpiry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Insurance Expiry Date (YYYY-MM-DD)"/>
+
+        <Button
+            android:id="@+id/btnUploadInsurance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upload Insurance Photo"/>
+
+        <ImageView
+            android:id="@+id/ivInsurancePreview"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <!-- Save Button -->
+        <Button
+            android:id="@+id/btnSaveData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Save Data"/>
+
+    </LinearLayout>
+</ScrollView>

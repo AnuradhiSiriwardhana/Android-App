@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".DetailActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvDetailVehicleNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:text="WP ABC-1234" />
+
+        <TextView
+            android:id="@+id/tvDetailOwnerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            tools:text="Owner Name" />
+
+        <!-- Other vehicle details -->
+        <TextView
+            android:id="@+id/tvDetailModel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Model: Toyota Corolla"/>
+        <TextView
+            android:id="@+id/tvDetailChassis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Chassis: 123456789"/>
+        <TextView
+            android:id="@+id/tvDetailRegDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Registered: 2022-01-01"/>
+
+        <!-- License Details -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="License Details"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp"/>
+        
+        <ImageView
+            android:id="@+id/ivDetailLicensePhoto"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:background="#f0f0f0"/>
+
+        <!-- Insurance Details -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Insurance Details"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp"/>
+
+        <ImageView
+            android:id="@+id/ivDetailInsurancePhoto"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:background="#f0f0f0"/>
+
+    </LinearLayout>
+</ScrollView>
