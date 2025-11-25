@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "C:\\Users\\anusi\\.gradle\\daemon\\8.7\\com.example.user-mergeDebugResources-35:\\layout\\activity_registration.xml",
+        "source": "C:\\Users\\anusi\\.gradle\\daemon\\8.7\\com.example.user-main-38:\\layout\\activity_registration.xml"
+    },
+    {
+        "merged": "C:\\Users\\anusi\\.gradle\\daemon\\8.7\\com.example.user-mergeDebugResources-35:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\anusi\\.gradle\\daemon\\8.7\\com.example.user-main-38:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "com.example.user-mergeDebugResources-35:/layout/activity_registration.xml",
+        "source": "com.example.user-main-38:/layout/activity_registration.xml"
+    }
+]
