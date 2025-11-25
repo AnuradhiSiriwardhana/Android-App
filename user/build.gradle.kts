@@ -2,14 +2,15 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
+    id("kotlin-parcelize")
 }
 
 android {
-    namespace = "com.example.carinfoapp"
+    namespace = "com.example.user"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.carinfoapp"
+        applicationId = "com.example.user"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
