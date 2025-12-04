@@ -18,7 +18,7 @@ class VehicleAdapter(
         fun onItemClick(vehicle: VehicleData) // For opening details
         fun onApproveClick(vehicle: VehicleData)
         fun onEditClick(vehicle: VehicleData)
-        fun onDeleteClick(vehicleNumber: String)
+        fun onDeleteClick(vehicleKey: String) // Changed to pass the key
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VehicleViewHolder {
@@ -64,8 +64,8 @@ class VehicleAdapter(
             binding.btnDelete.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    vehicleList[position].vehicleNumber?.let { vehicleNumber ->
-                        listener.onDeleteClick(vehicleNumber)
+                    vehicleList[position].key?.let { key ->
+                        listener.onDeleteClick(key) // Pass the correct key
                     }
                 }
             }

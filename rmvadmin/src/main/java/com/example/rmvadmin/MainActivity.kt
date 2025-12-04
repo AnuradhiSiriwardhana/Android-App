@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity(), VehicleAdapter.OnItemClickListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        database = FirebaseDatabase.getInstance().getReference("Vehicles")
+        database = FirebaseDatabase.getInstance().getReference("Vehicle Details")
 
         setupRecyclerView()
 
@@ -42,12 +42,15 @@ class MainActivity : AppCompatActivity(), VehicleAdapter.OnItemClickListener {
     private fun fetchVehicleData() {
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val list = ArrayList<VehicleData>()
+                vehicleList.clear() // Clear the list before adding new data
                 for (vehicleSnapshot in snapshot.children) {
                     val vehicle = vehicleSnapshot.getValue(VehicleData::class.java)
-                    vehicle?.let { list.add(it) }
+                    vehicle?.key = vehicleSnapshot.key // Store the unique key
+                    if (vehicle != null) {
+                        vehicleList.add(vehicle)
+                    }
                 }
-                adapter.updateList(list)
+                adapter.notifyDataSetChanged()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -58,14 +61,15 @@ class MainActivity : AppCompatActivity(), VehicleAdapter.OnItemClickListener {
 
     override fun onItemClick(vehicle: VehicleData) {
         val intent = Intent(this, DetailActivity::class.java).apply {
+            putExtra("VEHICLE_KEY", vehicle.key) // Pass the correct key
             putExtra("VEHICLE_DATA", vehicle)
         }
         startActivity(intent)
     }
 
     override fun onApproveClick(vehicle: VehicleData) {
-        vehicle.vehicleNumber?.let {
-            database.child(it).child("isApproved").setValue(true)
+        vehicle.key?.let {
+            database.child(it).child("approved").setValue(true)
                 .addOnSuccessListener {
                     Toast.makeText(this, "${vehicle.vehicleNumber} Approved", Toast.LENGTH_SHORT).show()
                 }
@@ -76,16 +80,17 @@ class MainActivity : AppCompatActivity(), VehicleAdapter.OnItemClickListener {
     }
 
     override fun onEditClick(vehicle: VehicleData) {
-        val intent = Intent(this, UploadActivity::class.java).apply {
+        val intent = Intent(this, UpdateActivity::class.java).apply {
+            putExtra("VEHICLE_KEY", vehicle.key) // Pass the correct key
             putExtra("VEHICLE_DATA", vehicle)
         }
         startActivity(intent)
     }
 
-    override fun onDeleteClick(vehicleNumber: String) {
-        database.child(vehicleNumber).removeValue()
+    override fun onDeleteClick(vehicleKey: String) {
+        database.child(vehicleKey).removeValue()
             .addOnSuccessListener {
-                Toast.makeText(this, "$vehicleNumber Deleted", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Vehicle Deleted", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener {
                 Toast.makeText(this, "Failed to delete", Toast.LENGTH_SHORT).show()

@@ -1,133 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     tools:context=".UploadActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:padding="16dp">
 
-        <!-- Core Details -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vehicle Details" 
-            android:textSize="18sp"
-            android:textStyle="bold"/>
-        <EditText
-            android:id="@+id/etOwnerName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Owner Name"/>
+            android:text="Upload Vehicle Details"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"/>
 
-        <EditText
-            android:id="@+id/etVehicleNumber"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Vehicle Number"/>
+            android:hint="Owner Name">
 
-        <EditText
-            android:id="@+id/etVehicleModel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Vehicle Model"/>
-            
-        <EditText
-            android:id="@+id/etChassisNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Chassis Number"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ownerNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/etRegistrationDate"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Registration Date (YYYY-MM-DD)"/>
+            android:layout_marginTop="8dp"
+            android:hint="Vehicle Number">
 
-        <!-- License Details -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/vehicleNumberEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Vehicle Model">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/vehicleModelEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Chassis Number">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/chassisNumberEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Registration Date (YYYY-MM-DD)">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/registrationDateEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="License Details"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="24dp"/>
 
-        <EditText
-            android:id="@+id/etLicenseNumber"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="License Number"/>
+            android:layout_marginTop="8dp"
+            android:hint="License Number">
 
-        <EditText
-            android:id="@+id/etLicenseExpiry"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/licenseNumberEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="License Expiry Date (YYYY-MM-DD)"/>
+            android:layout_marginTop="8dp"
+            android:hint="License Expiry Date (YYYY-MM-DD)">
 
-        <Button
-            android:id="@+id/btnUploadLicense"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Upload License Photo"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/licenseExpiryDateEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <ImageView
-            android:id="@+id/ivLicensePreview"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:id="@+id/licenseImageView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
             android:layout_marginTop="8dp"
-            android:scaleType="centerCrop"
+            android:scaleType="centerInside"
             android:visibility="gone"
-            tools:visibility="visible" />
+            android:src="@android:drawable/ic_menu_camera"/>
 
-        <!-- Insurance Details -->
+        <Button
+            android:id="@+id/uploadLicenseButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:text="Upload License Photo"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Insurance Details"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="24dp"/>
 
-        <EditText
-            android:id="@+id/etInsuranceNumber"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Insurance Number"/>
+            android:layout_marginTop="8dp"
+            android:hint="Insurance Number">
 
-        <EditText
-            android:id="@+id/etInsuranceExpiry"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/insuranceNumberEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Insurance Expiry Date (YYYY-MM-DD)"/>
+            android:layout_marginTop="8dp"
+            android:hint="Insurance Expiry Date (YYYY-MM-DD)">
 
-        <Button
-            android:id="@+id/btnUploadInsurance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Upload Insurance Photo"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/insuranceExpiryDateEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <ImageView
-            android:id="@+id/ivInsurancePreview"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:id="@+id/insuranceImageView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
             android:layout_marginTop="8dp"
-            android:scaleType="centerCrop"
+            android:scaleType="centerInside"
             android:visibility="gone"
-            tools:visibility="visible" />
+            android:src="@android:drawable/ic_menu_camera"/>
 
-        <!-- Save Button -->
         <Button
-            android:id="@+id/btnSaveData"
+            android:id="@+id/uploadInsuranceButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:text="Upload Insurance Photo"/>
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Save Data"/>
+            android:padding="16dp"
+            android:text="Save Vehicle Data"/>
 
     </LinearLayout>
 </ScrollView>
