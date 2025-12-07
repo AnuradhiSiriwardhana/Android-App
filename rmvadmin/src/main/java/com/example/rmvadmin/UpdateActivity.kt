@@ -1,21 +1,23 @@
 package com.example.rmvadmin
 
 import android.app.Activity
-import android.app.ProgressDialog
-import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import com.bumptech.glide.Glide
+import com.cloudinary.android.MediaManager
+import com.cloudinary.android.callback.ErrorInfo
+import com.cloudinary.android.callback.UploadCallback
 import com.example.rmvadmin.databinding.ActivityUpdateBinding
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.storage.FirebaseStorage
+import java.util.HashMap
 
 class UpdateActivity : AppCompatActivity() {
 
@@ -25,7 +27,10 @@ class UpdateActivity : AppCompatActivity() {
     private var vehicleKey: String? = null
     private var oldLicenseImageUrl: String? = null
     private var oldInsuranceImageUrl: String? = null
-    private lateinit var progressDialog: ProgressDialog
+
+    // Corrected Cloud Name from your screenshot
+    private val cloudName = "du8rqkbtb"
+    private val uploadPreset = "Android_App"
 
     private val selectLicenseImageLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
@@ -48,9 +53,7 @@ class UpdateActivity : AppCompatActivity() {
         binding = ActivityUpdateBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        progressDialog = ProgressDialog(this)
-        progressDialog.setMessage("Updating...")
-        progressDialog.setCancelable(false)
+        initCloudinary()
 
         val bundle = intent.extras
         if (bundle != null) {
@@ -101,8 +104,14 @@ class UpdateActivity : AppCompatActivity() {
         }
     }
 
+    private fun initCloudinary() {
+        val config = HashMap<String, String>()
+        config["cloud_name"] = cloudName
+        MediaManager.init(this, config)
+    }
+
     private fun updateVehicleData() {
-        progressDialog.show()
+        showProgressBar()
         val ownerName = binding.ownerNameEditText.text.toString()
         val vehicleNumber = binding.vehicleNumberEditText.text.toString()
         val vehicleModel = binding.vehicleModelEditText.text.toString()
@@ -112,11 +121,21 @@ class UpdateActivity : AppCompatActivity() {
         val licenseExpiryDate = binding.licenseExpiryDateEditText.text.toString()
         val insuranceNumber = binding.insuranceNumberEditText.text.toString()
         val insuranceExpiryDate = binding.insuranceExpiryDateEditText.text.toString()
-        
-        val databaseReference = FirebaseDatabase.getInstance().getReference("Vehicle Details").child(vehicleKey!!)
 
-        uploadImage(licenseImageUri, "license_photos/$vehicleKey") { newLicensePhotoUrl ->
-            uploadImage(insuranceImageUri, "insurance_photos/$vehicleKey") { newInsurancePhotoUrl ->
+        uploadImage(licenseImageUri) { newLicensePhotoUrl ->
+            uploadImage(insuranceImageUri) { newInsurancePhotoUrl ->
+
+                val licenseUrl = newLicensePhotoUrl ?: oldLicenseImageUrl
+                val insuranceUrl = newInsurancePhotoUrl ?: oldInsuranceImageUrl
+
+                if (licenseUrl == null || insuranceUrl == null) {
+                    hideProgressBar()
+                    Toast.makeText(this, "Image upload failed. Please try again.", Toast.LENGTH_SHORT).show()
+                    return@uploadImage
+                }
+
+                val databaseReference = FirebaseDatabase.getInstance().getReference("Vehicle Details").child(vehicleKey!!)
+
                 val updatedVehicleData = VehicleData(
                     key = vehicleKey,
                     ownerName = ownerName,
@@ -127,20 +146,20 @@ class UpdateActivity : AppCompatActivity() {
                     isApproved = true,
                     licenseNumber = licenseNumber,
                     licenseExpiryDate = licenseExpiryDate,
-                    licensePhotoUrl = if (newLicensePhotoUrl.isNotEmpty()) newLicensePhotoUrl else oldLicenseImageUrl,
+                    licensePhotoUrl = licenseUrl,
                     insuranceNumber = insuranceNumber,
                     insuranceExpiryDate = insuranceExpiryDate,
-                    insurancePhotoUrl = if (newInsurancePhotoUrl.isNotEmpty()) newInsurancePhotoUrl else oldInsuranceImageUrl
+                    insurancePhotoUrl = insuranceUrl
                 )
 
                 databaseReference.setValue(updatedVehicleData)
                     .addOnSuccessListener { 
-                        progressDialog.dismiss()
+                        hideProgressBar()
                         Toast.makeText(this, "Vehicle data updated successfully", Toast.LENGTH_SHORT).show()
                         finish()
                      }
                     .addOnFailureListener { 
-                        progressDialog.dismiss()
+                        hideProgressBar()
                         Toast.makeText(this, "Failed to update vehicle data", Toast.LENGTH_SHORT).show()
                      }
             }
@@ -157,59 +176,56 @@ class UpdateActivity : AppCompatActivity() {
     }
     
     private fun deleteVehicle() {
-        progressDialog.setMessage("Deleting...")
-        progressDialog.show()
+        showProgressBar()
         val databaseReference = FirebaseDatabase.getInstance().getReference("Vehicle Details").child(vehicleKey!!)
-        val licenseStorageReference = FirebaseStorage.getInstance().getReference("license_photos/$vehicleKey")
-        val insuranceStorageReference = FirebaseStorage.getInstance().getReference("insurance_photos/$vehicleKey")
-        
-        // Delete images first
-        licenseStorageReference.delete().addOnSuccessListener { 
-            insuranceStorageReference.delete().addOnSuccessListener { 
-                // Then delete the database record
-                databaseReference.removeValue()
-                    .addOnSuccessListener {
-                        progressDialog.dismiss()
-                        Toast.makeText(this, "Vehicle Deleted", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this, MainActivity::class.java)
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                        startActivity(intent)
-                        finish()
-                    }
-                    .addOnFailureListener { 
-                        progressDialog.dismiss()
-                        Toast.makeText(this, "Failed to delete vehicle", Toast.LENGTH_SHORT).show()
-                    }
-            }.addOnFailureListener {
-                progressDialog.dismiss()
-                Toast.makeText(this, "Failed to delete insurance photo", Toast.LENGTH_SHORT).show()
+        databaseReference.removeValue()
+            .addOnSuccessListener {
+                hideProgressBar()
+                Toast.makeText(this, "Vehicle Deleted", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+                finish()
             }
-        }.addOnFailureListener {
-            progressDialog.dismiss()
-            Toast.makeText(this, "Failed to delete license photo", Toast.LENGTH_SHORT).show()
-        }
+            .addOnFailureListener { 
+                hideProgressBar()
+                Toast.makeText(this, "Failed to delete vehicle", Toast.LENGTH_SHORT).show()
+            }
     }
 
-    private fun uploadImage(imageUri: Uri?, path: String, onComplete: (String) -> Unit) {
+    private fun uploadImage(imageUri: Uri?, onComplete: (String?) -> Unit) {
         if (imageUri == null) {
-            onComplete("")
+            onComplete("") // If no new image is selected, return an empty string
             return
         }
-        val storageReference = FirebaseStorage.getInstance().getReference(path)
-        storageReference.putFile(imageUri)
-            .addOnSuccessListener { 
-                storageReference.downloadUrl.addOnSuccessListener { uri ->
-                    onComplete(uri.toString())
-                }.addOnFailureListener {
-                    progressDialog.dismiss()
-                    Toast.makeText(this, "Failed to get download URL", Toast.LENGTH_LONG).show()
-                    onComplete("")
-                }
-             }
-            .addOnFailureListener { exception ->
-                progressDialog.dismiss()
-                Toast.makeText(this, "Image upload failed: ${exception.message}", Toast.LENGTH_LONG).show()
-                onComplete("")
-             }
+
+        MediaManager.get().upload(imageUri).unsigned(uploadPreset).callback(object : UploadCallback {
+            override fun onStart(requestId: String) {
+                Log.d("Cloudinary", "Upload started")
+            }
+
+            override fun onProgress(requestId: String, bytes: Long, totalBytes: Long) {}
+
+            override fun onSuccess(requestId: String, resultData: Map<*, *>) {
+                val url = resultData["secure_url"] as String
+                onComplete(url)
+            }
+
+            override fun onError(requestId: String, error: ErrorInfo) {
+                Log.e("Cloudinary", "Upload error: ${error.description}")
+                Toast.makeText(this@UpdateActivity, "Image upload failed: ${error.description}", Toast.LENGTH_LONG).show()
+                onComplete(null) // Signal that the upload failed
+            }
+
+            override fun onReschedule(requestId: String, error: ErrorInfo) {}
+        }).dispatch()
+    }
+
+    private fun showProgressBar() {
+        binding.progressBar.visibility = View.VISIBLE
+    }
+
+    private fun hideProgressBar() {
+        binding.progressBar.visibility = View.GONE
     }
 }
