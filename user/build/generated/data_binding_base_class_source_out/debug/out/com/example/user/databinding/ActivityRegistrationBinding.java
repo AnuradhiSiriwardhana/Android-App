@@ -6,7 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
@@ -23,6 +25,9 @@ public final class ActivityRegistrationBinding implements ViewBinding {
 
   @NonNull
   public final TextInputEditText chassisNumberEditText;
+
+  @NonNull
+  public final LinearLayout formLayout;
 
   @NonNull
   public final TextInputEditText insuranceExpiryDateEditText;
@@ -49,6 +54,9 @@ public final class ActivityRegistrationBinding implements ViewBinding {
   public final TextInputEditText registrationDateEditText;
 
   @NonNull
+  public final TextView statusTextView;
+
+  @NonNull
   public final Button submitButton;
 
   @NonNull
@@ -64,18 +72,19 @@ public final class ActivityRegistrationBinding implements ViewBinding {
   public final TextInputEditText vehicleNumberEditText;
 
   private ActivityRegistrationBinding(@NonNull ScrollView rootView,
-      @NonNull TextInputEditText chassisNumberEditText,
+      @NonNull TextInputEditText chassisNumberEditText, @NonNull LinearLayout formLayout,
       @NonNull TextInputEditText insuranceExpiryDateEditText, @NonNull ImageView insuranceImageView,
       @NonNull TextInputEditText insuranceNumberEditText,
       @NonNull TextInputEditText licenseExpiryDateEditText, @NonNull ImageView licenseImageView,
       @NonNull TextInputEditText licenseNumberEditText,
       @NonNull TextInputEditText ownerNameEditText,
-      @NonNull TextInputEditText registrationDateEditText, @NonNull Button submitButton,
-      @NonNull Button uploadInsuranceButton, @NonNull Button uploadLicenseButton,
-      @NonNull TextInputEditText vehicleModelEditText,
+      @NonNull TextInputEditText registrationDateEditText, @NonNull TextView statusTextView,
+      @NonNull Button submitButton, @NonNull Button uploadInsuranceButton,
+      @NonNull Button uploadLicenseButton, @NonNull TextInputEditText vehicleModelEditText,
       @NonNull TextInputEditText vehicleNumberEditText) {
     this.rootView = rootView;
     this.chassisNumberEditText = chassisNumberEditText;
+    this.formLayout = formLayout;
     this.insuranceExpiryDateEditText = insuranceExpiryDateEditText;
     this.insuranceImageView = insuranceImageView;
     this.insuranceNumberEditText = insuranceNumberEditText;
@@ -84,6 +93,7 @@ public final class ActivityRegistrationBinding implements ViewBinding {
     this.licenseNumberEditText = licenseNumberEditText;
     this.ownerNameEditText = ownerNameEditText;
     this.registrationDateEditText = registrationDateEditText;
+    this.statusTextView = statusTextView;
     this.submitButton = submitButton;
     this.uploadInsuranceButton = uploadInsuranceButton;
     this.uploadLicenseButton = uploadLicenseButton;
@@ -121,6 +131,12 @@ public final class ActivityRegistrationBinding implements ViewBinding {
       id = R.id.chassisNumberEditText;
       TextInputEditText chassisNumberEditText = ViewBindings.findChildViewById(rootView, id);
       if (chassisNumberEditText == null) {
+        break missingId;
+      }
+
+      id = R.id.formLayout;
+      LinearLayout formLayout = ViewBindings.findChildViewById(rootView, id);
+      if (formLayout == null) {
         break missingId;
       }
 
@@ -172,6 +188,12 @@ public final class ActivityRegistrationBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.statusTextView;
+      TextView statusTextView = ViewBindings.findChildViewById(rootView, id);
+      if (statusTextView == null) {
+        break missingId;
+      }
+
       id = R.id.submitButton;
       Button submitButton = ViewBindings.findChildViewById(rootView, id);
       if (submitButton == null) {
@@ -203,10 +225,10 @@ public final class ActivityRegistrationBinding implements ViewBinding {
       }
 
       return new ActivityRegistrationBinding((ScrollView) rootView, chassisNumberEditText,
-          insuranceExpiryDateEditText, insuranceImageView, insuranceNumberEditText,
+          formLayout, insuranceExpiryDateEditText, insuranceImageView, insuranceNumberEditText,
           licenseExpiryDateEditText, licenseImageView, licenseNumberEditText, ownerNameEditText,
-          registrationDateEditText, submitButton, uploadInsuranceButton, uploadLicenseButton,
-          vehicleModelEditText, vehicleNumberEditText);
+          registrationDateEditText, statusTextView, submitButton, uploadInsuranceButton,
+          uploadLicenseButton, vehicleModelEditText, vehicleNumberEditText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
