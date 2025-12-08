@@ -66,34 +66,4 @@ class MainActivity : AppCompatActivity(), VehicleAdapter.OnItemClickListener {
         }
         startActivity(intent)
     }
-
-    override fun onApproveClick(vehicle: VehicleData) {
-        vehicle.key?.let {
-            database.child(it).child("approved").setValue(true)
-                .addOnSuccessListener {
-                    Toast.makeText(this, "${vehicle.vehicleNumber} Approved", Toast.LENGTH_SHORT).show()
-                }
-                .addOnFailureListener {
-                    Toast.makeText(this, "Failed to approve", Toast.LENGTH_SHORT).show()
-                }
-        }
-    }
-
-    override fun onEditClick(vehicle: VehicleData) {
-        val intent = Intent(this, UpdateActivity::class.java).apply {
-            putExtra("VEHICLE_KEY", vehicle.key) // Pass the correct key
-            putExtra("VEHICLE_DATA", vehicle)
-        }
-        startActivity(intent)
-    }
-
-    override fun onDeleteClick(vehicleKey: String) {
-        database.child(vehicleKey).removeValue()
-            .addOnSuccessListener {
-                Toast.makeText(this, "Vehicle Deleted", Toast.LENGTH_SHORT).show()
-            }
-            .addOnFailureListener {
-                Toast.makeText(this, "Failed to delete", Toast.LENGTH_SHORT).show()
-            }
-    }
 }

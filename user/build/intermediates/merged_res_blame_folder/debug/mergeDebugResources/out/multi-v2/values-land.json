@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.user-mergeDebugResources-34:/values-land/values-land.xml",
+            "outputFile": "com.example.user-mergeDebugResources-38:/values-land/values-land.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\anusi\\.gradle\\caches\\transforms-4\\9f4624575e1798b4ab98a8a9a8f7be2c\\transformed\\appcompat-1.6.1\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\anusi\\.gradle\\caches\\8.13\\transforms\\26603ad74fb1b147bb8c9d50d4995309\\transformed\\appcompat-1.6.1\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\anusi\\.gradle\\caches\\transforms-4\\11902ef30526f818b599869737eb720a\\transformed\\material-1.11.0\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\anusi\\.gradle\\caches\\8.13\\transforms\\e317b24bbba33edc080c6cc0676deb22\\transformed\\material-1.11.0\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,26,35,40",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

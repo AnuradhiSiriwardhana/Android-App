@@ -2,11 +2,14 @@ package com.example.rmvadmin
 
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat // Added import
 import com.bumptech.glide.Glide
 import com.example.rmvadmin.databinding.ActivityDetailBinding
 import com.google.firebase.database.FirebaseDatabase
@@ -32,7 +35,7 @@ class DetailActivity : AppCompatActivity() {
                 bundle.getParcelable("VEHICLE_DATA")
             }
 
-            vehicleData?.let {
+            vehicleData?.let { 
                 binding.detailOwnerName.text = it.ownerName
                 binding.detailVehicleNumber.text = it.vehicleNumber
                 binding.detailVehicleModel.text = "Model: ${it.vehicleModel}"
@@ -43,25 +46,31 @@ class DetailActivity : AppCompatActivity() {
                 binding.detailInsuranceNumber.text = "Insurance: ${it.insuranceNumber}"
                 binding.detailInsuranceExpiryDate.text = "Expires: ${it.insuranceExpiryDate}"
 
+                updateApprovalStatus(it.isApproved)
+
                 Glide.with(this).load(it.licensePhotoUrl).into(binding.detailLicensePhoto)
                 Glide.with(this).load(it.insurancePhotoUrl).into(binding.detailInsurancePhoto)
             }
-        }
-
-        binding.updateButton.setOnClickListener {
-            val intent = Intent(this, UpdateActivity::class.java).apply {
-                putExtra("VEHICLE_KEY", vehicleKey)
-                putExtra("VEHICLE_DATA", vehicleData)
-            }
-            startActivity(intent)
         }
 
         binding.approveButton.setOnClickListener {
             approveVehicle()
         }
 
-        binding.deleteButton.setOnClickListener {
-            showDeleteConfirmationDialog()
+        binding.rejectButton.setOnClickListener {
+            showRejectConfirmationDialog()
+        }
+    }
+
+    private fun updateApprovalStatus(isApproved: Boolean) {
+        if (isApproved) {
+            binding.approvalStatus.text = "Approved"
+            binding.approvalStatus.setTextColor(ContextCompat.getColor(this, R.color.green))
+            binding.actionButtonsLayout.visibility = View.GONE // Hide buttons if already approved
+        } else {
+            binding.approvalStatus.text = "Pending Approval"
+            binding.approvalStatus.setTextColor(ContextCompat.getColor(this, R.color.blue))
+            binding.actionButtonsLayout.visibility = View.VISIBLE
         }
     }
 
@@ -71,7 +80,7 @@ class DetailActivity : AppCompatActivity() {
             databaseReference.child("approved").setValue(true)
                 .addOnSuccessListener {
                     Toast.makeText(this, "Vehicle Approved", Toast.LENGTH_SHORT).show()
-                    finish() // Go back to the main list
+                    updateApprovalStatus(true)
                 }
                 .addOnFailureListener {
                     Toast.makeText(this, "Failed to approve vehicle", Toast.LENGTH_SHORT).show()
@@ -79,25 +88,25 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun showDeleteConfirmationDialog() {
+    private fun showRejectConfirmationDialog() {
         AlertDialog.Builder(this)
-            .setTitle("Delete Vehicle")
-            .setMessage("Are you sure you want to delete this vehicle record?")
-            .setPositiveButton("Delete") { _, _ -> deleteVehicle() }
+            .setTitle("Reject Submission")
+            .setMessage("Are you sure you want to reject and delete this submission?")
+            .setPositiveButton("Reject") { _, _ -> rejectVehicle() }
             .setNegativeButton("Cancel", null)
             .show()
     }
 
-    private fun deleteVehicle() {
+    private fun rejectVehicle() {
         vehicleKey?.let {
             val databaseReference = FirebaseDatabase.getInstance().getReference("Vehicle Details").child(it)
             databaseReference.removeValue()
                 .addOnSuccessListener {
-                    Toast.makeText(this, "Vehicle Deleted", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Submission Rejected", Toast.LENGTH_SHORT).show()
                     finish() // Go back to the main list
                 }
                 .addOnFailureListener {
-                    Toast.makeText(this, "Failed to delete vehicle", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Failed to reject submission", Toast.LENGTH_SHORT).show()
                 }
         }
     }

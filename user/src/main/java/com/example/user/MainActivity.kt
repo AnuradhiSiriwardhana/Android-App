@@ -17,5 +17,9 @@ class MainActivity : AppCompatActivity() {
         binding.registerButton.setOnClickListener {
             startActivity(Intent(this, RegistrationActivity::class.java))
         }
+
+        binding.myMessagesButton.setOnClickListener {
+            startActivity(Intent(this, MessagesActivity::class.java))
+        }
     }
 }

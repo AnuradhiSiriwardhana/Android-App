@@ -7,8 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.user.databinding.ActivityRegistrationBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
 class RegistrationActivity : AppCompatActivity() {
 
@@ -52,7 +55,41 @@ class RegistrationActivity : AppCompatActivity() {
         }
 
         binding.submitButton.setOnClickListener {
-            // You will need to get the data from the EditTexts and upload the images to Firebase Storage
+            submitRegistration()
         }
+    }
+
+    private fun submitRegistration() {
+        val ownerName = binding.ownerNameEditText.text.toString()
+        val vehicleNumber = binding.vehicleNumberEditText.text.toString()
+        // ... get all other details ...
+        val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
+
+        if (currentUserId == null) {
+            Toast.makeText(this, "You must be logged in to submit.", Toast.LENGTH_SHORT).show()
+            return
+        }
+        
+        // NOTE: This is a simplified version. In a real app, you would upload images first.
+        val databaseReference = FirebaseDatabase.getInstance().getReference("Vehicle Details")
+        val vehicleId = databaseReference.push().key!!
+
+        val vehicleData = VehicleData(
+            key = vehicleId,
+            userId = currentUserId,
+            ownerName = ownerName,
+            vehicleNumber = vehicleNumber,
+            // ... add all other fields ...
+            isApproved = false
+        )
+
+        databaseReference.child(vehicleId).setValue(vehicleData)
+            .addOnSuccessListener { 
+                Toast.makeText(this, "Registration submitted for approval.", Toast.LENGTH_SHORT).show()
+                finish()
+             }
+            .addOnFailureListener { 
+                Toast.makeText(this, "Failed to submit registration.", Toast.LENGTH_SHORT).show()
+             }
     }
 }

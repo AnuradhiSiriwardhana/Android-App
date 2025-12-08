@@ -25,10 +25,10 @@ class UpdateActivity : AppCompatActivity() {
     private var licenseImageUri: Uri? = null
     private var insuranceImageUri: Uri? = null
     private var vehicleKey: String? = null
+    private var vehicleData: VehicleData? = null // To hold the original vehicle data
     private var oldLicenseImageUrl: String? = null
     private var oldInsuranceImageUrl: String? = null
 
-    // Corrected Cloud Name from your screenshot
     private val cloudName = "du8rqkbtb"
     private val uploadPreset = "Android_App"
 
@@ -57,7 +57,7 @@ class UpdateActivity : AppCompatActivity() {
 
         val bundle = intent.extras
         if (bundle != null) {
-            val vehicleData = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            vehicleData = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 bundle.getParcelable("VEHICLE_DATA", VehicleData::class.java)
             } else {
                 @Suppress("DEPRECATION")
@@ -143,7 +143,7 @@ class UpdateActivity : AppCompatActivity() {
                     vehicleModel = vehicleModel,
                     chassisNumber = chassisNumber,
                     registrationDate = registrationDate,
-                    isApproved = true,
+                    isApproved = vehicleData?.isApproved ?: false, // Preserve original approval status
                     licenseNumber = licenseNumber,
                     licenseExpiryDate = licenseExpiryDate,
                     licensePhotoUrl = licenseUrl,

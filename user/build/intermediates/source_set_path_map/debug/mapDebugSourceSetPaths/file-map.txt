@@ -1,39 +1,44 @@
-com.example.user-material-1.11.0-0 C:\Users\anusi\.gradle\caches\transforms-4\11902ef30526f818b599869737eb720a\transformed\material-1.11.0\res
-com.example.user-appcompat-resources-1.6.1-1 C:\Users\anusi\.gradle\caches\transforms-4\221a920eaa6e02f035864cd9872103bc\transformed\appcompat-resources-1.6.1\res
-com.example.user-play-services-base-18.1.0-2 C:\Users\anusi\.gradle\caches\transforms-4\2408d8b1b745d29ef4474f52169c5d39\transformed\play-services-base-18.1.0\res
-com.example.user-constraintlayout-2.1.4-3 C:\Users\anusi\.gradle\caches\transforms-4\32a906c7266cc5af96c76fa2926d175a\transformed\constraintlayout-2.1.4\res
-com.example.user-emoji2-views-helper-1.2.0-4 C:\Users\anusi\.gradle\caches\transforms-4\33535a79809e954f325300c07de93096\transformed\emoji2-views-helper-1.2.0\res
-com.example.user-emoji2-1.2.0-5 C:\Users\anusi\.gradle\caches\transforms-4\38695dc40a149e59f483ff0103037d6e\transformed\emoji2-1.2.0\res
-com.example.user-lifecycle-runtime-2.6.1-6 C:\Users\anusi\.gradle\caches\transforms-4\4603b154f86fcea9caf93bd1ac16469b\transformed\lifecycle-runtime-2.6.1\res
-com.example.user-drawerlayout-1.1.1-7 C:\Users\anusi\.gradle\caches\transforms-4\4640dde843c45042d0ab380b3493a92a\transformed\drawerlayout-1.1.1\res
-com.example.user-core-1.12.0-8 C:\Users\anusi\.gradle\caches\transforms-4\5854e79948ff36c28d70787dc8aa2687\transformed\core-1.12.0\res
-com.example.user-lifecycle-viewmodel-savedstate-2.6.1-9 C:\Users\anusi\.gradle\caches\transforms-4\591b79e132e0361cee946de811e58bd8\transformed\lifecycle-viewmodel-savedstate-2.6.1\res
-com.example.user-core-runtime-2.2.0-10 C:\Users\anusi\.gradle\caches\transforms-4\5de04fd19eb9fbd59b492350a3035183\transformed\core-runtime-2.2.0\res
-com.example.user-core-ktx-1.12.0-11 C:\Users\anusi\.gradle\caches\transforms-4\6396c2c88edcfc3fee6876d3425abf50\transformed\core-ktx-1.12.0\res
-com.example.user-lifecycle-viewmodel-2.6.1-12 C:\Users\anusi\.gradle\caches\transforms-4\6a1b7de924a891b9fb28a919cbe64a49\transformed\lifecycle-viewmodel-2.6.1\res
-com.example.user-cardview-1.0.0-13 C:\Users\anusi\.gradle\caches\transforms-4\6b1ed1a09dd8fe08bee5690094e258e7\transformed\cardview-1.0.0\res
-com.example.user-lifecycle-livedata-2.6.1-14 C:\Users\anusi\.gradle\caches\transforms-4\6d197817d8bb0070cdd05a1ccf365472\transformed\lifecycle-livedata-2.6.1\res
-com.example.user-fragment-1.3.6-15 C:\Users\anusi\.gradle\caches\transforms-4\6f452785d61bfa334814ed436376db2b\transformed\fragment-1.3.6\res
-com.example.user-play-services-basement-18.3.0-16 C:\Users\anusi\.gradle\caches\transforms-4\71e1954253b76b3252fd5db603716fe2\transformed\play-services-basement-18.3.0\res
-com.example.user-lifecycle-livedata-core-2.6.1-17 C:\Users\anusi\.gradle\caches\transforms-4\754cdc9af0e30ce6b6c057453f793bfe\transformed\lifecycle-livedata-core-2.6.1\res
-com.example.user-recyclerview-1.1.0-18 C:\Users\anusi\.gradle\caches\transforms-4\7ba62a5895d69ebbf55ceb94d63c612f\transformed\recyclerview-1.1.0\res
-com.example.user-coordinatorlayout-1.1.0-19 C:\Users\anusi\.gradle\caches\transforms-4\8e39ecaebc077f7dec32e790f0a9c4f7\transformed\coordinatorlayout-1.1.0\res
-com.example.user-annotation-experimental-1.3.0-20 C:\Users\anusi\.gradle\caches\transforms-4\92b009224c7294760b174e4b47619ac3\transformed\annotation-experimental-1.3.0\res
-com.example.user-browser-1.4.0-21 C:\Users\anusi\.gradle\caches\transforms-4\96bbee820e1af06e96e7b58db9a9eca0\transformed\browser-1.4.0\res
-com.example.user-activity-1.8.0-22 C:\Users\anusi\.gradle\caches\transforms-4\9bd4d7431347742bb0b026f12ab754fb\transformed\activity-1.8.0\res
-com.example.user-startup-runtime-1.1.1-23 C:\Users\anusi\.gradle\caches\transforms-4\9ce7b9f742246da9e7891cb1cb5e079c\transformed\startup-runtime-1.1.1\res
-com.example.user-transition-1.2.0-24 C:\Users\anusi\.gradle\caches\transforms-4\9d8d42a3d24c730d9ea7eabb8dfb22a6\transformed\transition-1.2.0\res
-com.example.user-appcompat-1.6.1-25 C:\Users\anusi\.gradle\caches\transforms-4\9f4624575e1798b4ab98a8a9a8f7be2c\transformed\appcompat-1.6.1\res
-com.example.user-lifecycle-process-2.6.1-26 C:\Users\anusi\.gradle\caches\transforms-4\c1a3d022db2cf4ffba0bb3829bd4c6d3\transformed\lifecycle-process-2.6.1\res
-com.example.user-savedstate-1.2.1-27 C:\Users\anusi\.gradle\caches\transforms-4\c5db1f4df6ebc56629ec059025d7772c\transformed\savedstate-1.2.1\res
-com.example.user-firebase-common-20.4.2-28 C:\Users\anusi\.gradle\caches\transforms-4\c8acc9c6baee50d965efe9549e273acf\transformed\firebase-common-20.4.2\res
-com.example.user-viewpager2-1.0.0-29 C:\Users\anusi\.gradle\caches\transforms-4\e0186d0570c617ec874ca8c28ef39c98\transformed\viewpager2-1.0.0\res
-com.example.user-profileinstaller-1.3.0-30 C:\Users\anusi\.gradle\caches\transforms-4\f2216c2911aeed4805a1415ee07d8177\transformed\profileinstaller-1.3.0\res
-com.example.user-pngs-31 D:\Project\Android Mobile App\CarInfoApp Final 2\user\build\generated\res\pngs\debug
-com.example.user-res-32 D:\Project\Android Mobile App\CarInfoApp Final 2\user\build\generated\res\processDebugGoogleServices
-com.example.user-resValues-33 D:\Project\Android Mobile App\CarInfoApp Final 2\user\build\generated\res\resValues\debug
-com.example.user-packageDebugResources-34 D:\Project\Android Mobile App\CarInfoApp Final 2\user\build\intermediates\incremental\debug\packageDebugResources\merged.dir
-com.example.user-packageDebugResources-35 D:\Project\Android Mobile App\CarInfoApp Final 2\user\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
-com.example.user-debug-36 D:\Project\Android Mobile App\CarInfoApp Final 2\user\build\intermediates\merged_res\debug\mergeDebugResources
-com.example.user-debug-37 D:\Project\Android Mobile App\CarInfoApp Final 2\user\src\debug\res
-com.example.user-main-38 D:\Project\Android Mobile App\CarInfoApp Final 2\user\src\main\res
+com.example.user-core-1.12.0-0 C:\Users\anusi\.gradle\caches\8.13\transforms\023ff112838f91baaa38b7d447de3309\transformed\core-1.12.0\res
+com.example.user-core-runtime-2.2.0-1 C:\Users\anusi\.gradle\caches\8.13\transforms\0351baf7890cdad733c2f168c23e64b6\transformed\core-runtime-2.2.0\res
+com.example.user-recyclerview-1.1.0-2 C:\Users\anusi\.gradle\caches\8.13\transforms\03dd64f83a97a664a234afbe5444c244\transformed\recyclerview-1.1.0\res
+com.example.user-drawerlayout-1.1.1-3 C:\Users\anusi\.gradle\caches\8.13\transforms\12bb2740ee8d8136d88055581dc0265f\transformed\drawerlayout-1.1.1\res
+com.example.user-fragment-1.3.6-4 C:\Users\anusi\.gradle\caches\8.13\transforms\180576381d374a64c0b1de25f302823e\transformed\fragment-1.3.6\res
+com.example.user-lifecycle-runtime-2.6.1-5 C:\Users\anusi\.gradle\caches\8.13\transforms\18fc5311a3351533fa4ec1aaaa1e95a3\transformed\lifecycle-runtime-2.6.1\res
+com.example.user-appcompat-1.6.1-6 C:\Users\anusi\.gradle\caches\8.13\transforms\26603ad74fb1b147bb8c9d50d4995309\transformed\appcompat-1.6.1\res
+com.example.user-emoji2-1.2.0-7 C:\Users\anusi\.gradle\caches\8.13\transforms\3782b83e8e75311914282f5946c2223a\transformed\emoji2-1.2.0\res
+com.example.user-lifecycle-process-2.6.1-8 C:\Users\anusi\.gradle\caches\8.13\transforms\37c5c3a507aab9c55e9077e7554df69b\transformed\lifecycle-process-2.6.1\res
+com.example.user-lifecycle-viewmodel-2.6.1-9 C:\Users\anusi\.gradle\caches\8.13\transforms\4dd993bf0462bbeccdeedf49e276c315\transformed\lifecycle-viewmodel-2.6.1\res
+com.example.user-lifecycle-livedata-core-2.6.1-10 C:\Users\anusi\.gradle\caches\8.13\transforms\51a5ef5d298af2586057cadce5fd1dd9\transformed\lifecycle-livedata-core-2.6.1\res
+com.example.user-browser-1.4.0-11 C:\Users\anusi\.gradle\caches\8.13\transforms\5369b1405725018800a13f0e04d989f3\transformed\browser-1.4.0\res
+com.example.user-coordinatorlayout-1.1.0-12 C:\Users\anusi\.gradle\caches\8.13\transforms\53928e34c7d538181318edd3f868da55\transformed\coordinatorlayout-1.1.0\res
+com.example.user-constraintlayout-2.1.4-13 C:\Users\anusi\.gradle\caches\8.13\transforms\5a5a2ab1ad8b5fd9a5156e064a48232e\transformed\constraintlayout-2.1.4\res
+com.example.user-firebase-common-22.0.1-14 C:\Users\anusi\.gradle\caches\8.13\transforms\64000b045b618bfa6f66702bea27639c\transformed\firebase-common-22.0.1\res
+com.example.user-profileinstaller-1.3.0-15 C:\Users\anusi\.gradle\caches\8.13\transforms\6569c1990be01d99656ac5a37cc7fa97\transformed\profileinstaller-1.3.0\res
+com.example.user-annotation-experimental-1.3.0-16 C:\Users\anusi\.gradle\caches\8.13\transforms\682382e1036f595af1befbde9779b048\transformed\annotation-experimental-1.3.0\res
+com.example.user-play-services-basement-18.3.0-17 C:\Users\anusi\.gradle\caches\8.13\transforms\689fdac76fb96180f632d5e41a3bbf01\transformed\play-services-basement-18.3.0\res
+com.example.user-datastore-preferences-core-release-18 C:\Users\anusi\.gradle\caches\8.13\transforms\6dff12cd3f0622010924a7a5623e3392\transformed\datastore-preferences-core-release\res
+com.example.user-lifecycle-viewmodel-savedstate-2.6.1-19 C:\Users\anusi\.gradle\caches\8.13\transforms\765033794b2ba0bda6c04a147e017a93\transformed\lifecycle-viewmodel-savedstate-2.6.1\res
+com.example.user-activity-1.8.0-20 C:\Users\anusi\.gradle\caches\8.13\transforms\7960006b314c725d11e34ac0744cbb43\transformed\activity-1.8.0\res
+com.example.user-emoji2-views-helper-1.2.0-21 C:\Users\anusi\.gradle\caches\8.13\transforms\7df8485d521739992bada1d5731c64a6\transformed\emoji2-views-helper-1.2.0\res
+com.example.user-play-services-base-18.1.0-22 C:\Users\anusi\.gradle\caches\8.13\transforms\8588291e368758496600b01debf2e66a\transformed\play-services-base-18.1.0\res
+com.example.user-viewpager2-1.0.0-23 C:\Users\anusi\.gradle\caches\8.13\transforms\8994ab245fb2900bc1c8fe6422a52218\transformed\viewpager2-1.0.0\res
+com.example.user-appcompat-resources-1.6.1-24 C:\Users\anusi\.gradle\caches\8.13\transforms\98ac2464d8c2265c0e21e16e15a88de9\transformed\appcompat-resources-1.6.1\res
+com.example.user-transition-1.2.0-25 C:\Users\anusi\.gradle\caches\8.13\transforms\9c65db5bf90bbc52333aedf49f039441\transformed\transition-1.2.0\res
+com.example.user-datastore-preferences-release-26 C:\Users\anusi\.gradle\caches\8.13\transforms\aca28be208d5bded748070338a85a4ac\transformed\datastore-preferences-release\res
+com.example.user-core-ktx-1.12.0-27 C:\Users\anusi\.gradle\caches\8.13\transforms\aea6a8743d39833387e0692f77fb1f40\transformed\core-ktx-1.12.0\res
+com.example.user-datastore-core-release-28 C:\Users\anusi\.gradle\caches\8.13\transforms\b1e11f5016a9977ed4d9cb2217b63bcc\transformed\datastore-core-release\res
+com.example.user-lifecycle-livedata-2.6.1-29 C:\Users\anusi\.gradle\caches\8.13\transforms\c562ec763160caa4bebe2a972bd57a11\transformed\lifecycle-livedata-2.6.1\res
+com.example.user-datastore-release-30 C:\Users\anusi\.gradle\caches\8.13\transforms\da65332b4f0b0e40f27cb7c45df97eb7\transformed\datastore-release\res
+com.example.user-savedstate-1.2.1-31 C:\Users\anusi\.gradle\caches\8.13\transforms\e1bd6f18ccdeaa0a2899577e2a085d4d\transformed\savedstate-1.2.1\res
+com.example.user-material-1.11.0-32 C:\Users\anusi\.gradle\caches\8.13\transforms\e317b24bbba33edc080c6cc0676deb22\transformed\material-1.11.0\res
+com.example.user-cardview-1.0.0-33 C:\Users\anusi\.gradle\caches\8.13\transforms\f300f76a7d48ec27a4cffd155a7388f7\transformed\cardview-1.0.0\res
+com.example.user-startup-runtime-1.1.1-34 C:\Users\anusi\.gradle\caches\8.13\transforms\fe8a5b9804dd8dd207bb8dbc88fa8133\transformed\startup-runtime-1.1.1\res
+com.example.user-pngs-35 D:\Project\Android Mobile App\CarInfoApp Final 2\user\build\generated\res\pngs\debug
+com.example.user-res-36 D:\Project\Android Mobile App\CarInfoApp Final 2\user\build\generated\res\processDebugGoogleServices
+com.example.user-resValues-37 D:\Project\Android Mobile App\CarInfoApp Final 2\user\build\generated\res\resValues\debug
+com.example.user-updated_navigation_xml-38 D:\Project\Android Mobile App\CarInfoApp Final 2\user\build\generated\updated_navigation_xml\debug
+com.example.user-packageDebugResources-39 D:\Project\Android Mobile App\CarInfoApp Final 2\user\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.example.user-packageDebugResources-40 D:\Project\Android Mobile App\CarInfoApp Final 2\user\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.example.user-debug-41 D:\Project\Android Mobile App\CarInfoApp Final 2\user\build\intermediates\merged_res\debug\mergeDebugResources
+com.example.user-debug-42 D:\Project\Android Mobile App\CarInfoApp Final 2\user\src\debug\res
+com.example.user-main-43 D:\Project\Android Mobile App\CarInfoApp Final 2\user\src\main\res

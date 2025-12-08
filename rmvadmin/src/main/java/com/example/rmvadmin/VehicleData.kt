@@ -5,7 +5,8 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class VehicleData(
-    var key: String? = null, // Added to store the unique Firebase key
+    var key: String? = null,
+    var userId: String? = null, // Added to link to the user
     val ownerName: String? = null,
     val vehicleNumber: String? = null,
     val vehicleModel: String? = null,

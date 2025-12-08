@@ -3255,6 +3255,8 @@ id clockwise
 id closest
 id collapseActionView
 id compress
+id confirmPasswordEditText
+id confirmPasswordInputLayout
 id confirm_button
 id constraint
 id container
@@ -3308,6 +3310,8 @@ id edge
 id edit_query
 id edit_text_id
 id elastic
+id emailEditText
+id emailInputLayout
 id embed
 id end
 id endToStart
@@ -3382,6 +3386,8 @@ id line3
 id linear
 id listMode
 id list_item
+id loginButton
+id loginPromptTextView
 id m3_side_sheet
 id marquee
 id masked
@@ -3409,6 +3415,8 @@ id material_timepicker_view
 id material_value_index
 id matrix
 id message
+id messageTextView
+id messagesRecyclerView
 id middle
 id mini
 id month_grid
@@ -3442,6 +3450,7 @@ id mtrl_picker_text_input_range_start
 id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
+id myMessagesButton
 id navigation_bar_item_active_indicator_view
 id navigation_bar_item_icon_container
 id navigation_bar_item_icon_view
@@ -3487,6 +3496,8 @@ id parent
 id parentPanel
 id parentRelative
 id parent_matrix
+id passwordEditText
+id passwordInputLayout
 id password_toggle
 id path
 id pathRelative
@@ -3540,6 +3551,8 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
+id signUpButton
+id signUpPromptTextView
 id sin
 id skipCollapsed
 id skipped
@@ -3594,6 +3607,7 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id textViewTitle
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -3604,6 +3618,7 @@ id textinput_placeholder
 id textinput_prefix_text
 id textinput_suffix_text
 id time
+id timestampTextView
 id title
 id titleDividerNoCustom
 id title_template
@@ -3762,8 +3777,11 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_login
 layout activity_main
+layout activity_messages
 layout activity_registration
+layout activity_signup
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout custom_dialog
@@ -3784,6 +3802,7 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
+layout item_message
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title

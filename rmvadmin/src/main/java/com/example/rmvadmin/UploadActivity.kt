@@ -22,7 +22,6 @@ class UploadActivity : AppCompatActivity() {
     private var licenseImageUri: Uri? = null
     private var insuranceImageUri: Uri? = null
 
-    // Corrected Cloud Name from your screenshot
     private val cloudName = "du8rqkbtb"
     private val uploadPreset = "Android_App"
 
@@ -104,7 +103,7 @@ class UploadActivity : AppCompatActivity() {
                     vehicleModel = vehicleModel,
                     chassisNumber = chassisNumber,
                     registrationDate = registrationDate,
-                    isApproved = true,
+                    isApproved = false, // Set to false by default
                     licenseNumber = licenseNumber,
                     licenseExpiryDate = licenseExpiryDate,
                     licensePhotoUrl = licensePhotoUrl,
@@ -116,7 +115,7 @@ class UploadActivity : AppCompatActivity() {
                 databaseReference.child(vehicleId).setValue(vehicleData)
                     .addOnSuccessListener { 
                         hideProgressBar()
-                        Toast.makeText(this, "Vehicle data saved successfully", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Vehicle data saved for approval", Toast.LENGTH_SHORT).show()
                         finish()
                      }
                     .addOnFailureListener { 
@@ -129,7 +128,7 @@ class UploadActivity : AppCompatActivity() {
 
     private fun uploadImage(imageUri: Uri?, onComplete: (String?) -> Unit) {
         if (imageUri == null) {
-            onComplete("") // If no image is selected, return an empty string
+            onComplete("")
             return
         }
 
@@ -148,7 +147,7 @@ class UploadActivity : AppCompatActivity() {
             override fun onError(requestId: String, error: ErrorInfo) {
                 Log.e("Cloudinary", "Upload error: ${error.description}")
                 Toast.makeText(this@UploadActivity, "Image upload failed: ${error.description}", Toast.LENGTH_LONG).show()
-                onComplete(null) // Signal that the upload failed
+                onComplete(null)
             }
 
             override fun onReschedule(requestId: String, error: ErrorInfo) {}
