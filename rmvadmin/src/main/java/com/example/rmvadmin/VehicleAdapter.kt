@@ -13,6 +13,7 @@ class VehicleAdapter(
 
     interface OnItemClickListener {
         fun onItemClick(vehicle: VehicleData)
+        fun onDeleteClick(vehicleKey: String)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VehicleViewHolder {
@@ -39,6 +40,15 @@ class VehicleAdapter(
                 val position = bindingAdapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     listener.onItemClick(vehicleList[position])
+                }
+            }
+            
+            binding.deleteButton.setOnClickListener {
+                val position = bindingAdapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    vehicleList[position].key?.let { key ->
+                        listener.onDeleteClick(key)
+                    }
                 }
             }
         }

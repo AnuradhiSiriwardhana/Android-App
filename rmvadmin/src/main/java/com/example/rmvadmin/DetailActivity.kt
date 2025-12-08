@@ -9,7 +9,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat // Added import
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.rmvadmin.databinding.ActivityDetailBinding
 import com.google.firebase.database.FirebaseDatabase
@@ -60,6 +60,10 @@ class DetailActivity : AppCompatActivity() {
         binding.rejectButton.setOnClickListener {
             showRejectConfirmationDialog()
         }
+        
+        binding.sendMessageButton.setOnClickListener {
+            sendManualMessage()
+        }
     }
 
     private fun updateApprovalStatus(isApproved: Boolean) {
@@ -81,6 +85,7 @@ class DetailActivity : AppCompatActivity() {
                 .addOnSuccessListener {
                     Toast.makeText(this, "Vehicle Approved", Toast.LENGTH_SHORT).show()
                     updateApprovalStatus(true)
+                    sendAutomatedMessage("Your vehicle registration has been approved. Reference Number: $vehicleKey")
                 }
                 .addOnFailureListener {
                     Toast.makeText(this, "Failed to approve vehicle", Toast.LENGTH_SHORT).show()
@@ -99,15 +104,47 @@ class DetailActivity : AppCompatActivity() {
 
     private fun rejectVehicle() {
         vehicleKey?.let {
+            sendAutomatedMessage("Your vehicle registration has been rejected. Please check your details and resubmit. Reference Number: $vehicleKey")
             val databaseReference = FirebaseDatabase.getInstance().getReference("Vehicle Details").child(it)
             databaseReference.removeValue()
                 .addOnSuccessListener {
                     Toast.makeText(this, "Submission Rejected", Toast.LENGTH_SHORT).show()
-                    finish() // Go back to the main list
+                    finish()
                 }
                 .addOnFailureListener {
                     Toast.makeText(this, "Failed to reject submission", Toast.LENGTH_SHORT).show()
                 }
         }
+    }
+
+    private fun sendManualMessage() {
+        val message = binding.messageEditText.text.toString()
+        if (message.isEmpty()) {
+            Toast.makeText(this, "Please enter a message", Toast.LENGTH_SHORT).show()
+            return
+        }
+        sendAutomatedMessage(message) // Re-use the same message sending logic
+        binding.messageEditText.text?.clear()
+    }
+    
+    private fun sendAutomatedMessage(message: String) {
+        val userId = vehicleData?.userId
+        if (userId == null) {
+            Toast.makeText(this, "Cannot send message: User ID is missing", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val databaseReference = FirebaseDatabase.getInstance().getReference("messages").child(userId)
+        val messageId = databaseReference.push().key!!
+        
+        val messageData = mapOf("message" to message, "timestamp" to System.currentTimeMillis())
+
+        databaseReference.child(messageId).setValue(messageData)
+            .addOnSuccessListener { 
+                Toast.makeText(this, "Message sent successfully", Toast.LENGTH_SHORT).show()
+             }
+            .addOnFailureListener { 
+                Toast.makeText(this, "Failed to send message", Toast.LENGTH_SHORT).show()
+             }
     }
 }
