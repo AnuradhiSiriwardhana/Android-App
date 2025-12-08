@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.user-mergeDebugResources-38:/values-v28/values-v28.xml",
+            "outputFile": "com.example.user-mergeDebugResources-43:/values-v28/values-v28.xml",
             "map": [
                 {
                     "source": "C:\\Users\\anusi\\.gradle\\caches\\8.13\\transforms\\e317b24bbba33edc080c6cc0676deb22\\transformed\\material-1.11.0\\res\\values-v28\\values-v28.xml",

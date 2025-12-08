@@ -12,6 +12,7 @@ id confirmPasswordEditText
 id confirmPasswordInputLayout
 id emailEditText
 id emailInputLayout
+id formLayout
 id insuranceExpiryDateEditText
 id insuranceImageView
 id insuranceNumberEditText
@@ -30,6 +31,7 @@ id registerButton
 id registrationDateEditText
 id signUpButton
 id signUpPromptTextView
+id statusTextView
 id submitButton
 id textViewTitle
 id timestampTextView

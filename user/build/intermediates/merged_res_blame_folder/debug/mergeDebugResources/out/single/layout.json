@@ -1,26 +1,26 @@
 [
     {
-        "merged": "C:\\Users\\anusi\\.gradle\\daemon\\8.13\\com.example.user-mergeDebugResources-39:\\layout\\activity_messages.xml",
-        "source": "C:\\Users\\anusi\\.gradle\\daemon\\8.13\\com.example.user-main-42:\\layout\\activity_messages.xml"
+        "merged": "com.example.user-mergeDebugResources-44:/layout/activity_main.xml",
+        "source": "com.example.user-main-47:/layout/activity_main.xml"
     },
     {
-        "merged": "com.example.user-mergeDebugResources-39:/layout/activity_signup.xml",
-        "source": "com.example.user-main-42:/layout/activity_signup.xml"
+        "merged": "com.example.user-mergeDebugResources-44:/layout/activity_registration.xml",
+        "source": "com.example.user-main-47:/layout/activity_registration.xml"
     },
     {
-        "merged": "C:\\Users\\anusi\\.gradle\\daemon\\8.13\\com.example.user-mergeDebugResources-39:\\layout\\item_message.xml",
-        "source": "C:\\Users\\anusi\\.gradle\\daemon\\8.13\\com.example.user-main-42:\\layout\\item_message.xml"
+        "merged": "com.example.user-mergeDebugResources-44:/layout/activity_login.xml",
+        "source": "com.example.user-main-47:/layout/activity_login.xml"
     },
     {
-        "merged": "C:\\Users\\anusi\\.gradle\\daemon\\8.13\\com.example.user-mergeDebugResources-39:\\layout\\activity_main.xml",
-        "source": "C:\\Users\\anusi\\.gradle\\daemon\\8.13\\com.example.user-main-42:\\layout\\activity_main.xml"
+        "merged": "com.example.user-mergeDebugResources-44:/layout/item_message.xml",
+        "source": "com.example.user-main-47:/layout/item_message.xml"
     },
     {
-        "merged": "C:\\Users\\anusi\\.gradle\\daemon\\8.13\\com.example.user-mergeDebugResources-39:\\layout\\activity_registration.xml",
-        "source": "C:\\Users\\anusi\\.gradle\\daemon\\8.13\\com.example.user-main-42:\\layout\\activity_registration.xml"
+        "merged": "com.example.user-mergeDebugResources-44:/layout/activity_signup.xml",
+        "source": "com.example.user-main-47:/layout/activity_signup.xml"
     },
     {
-        "merged": "com.example.user-mergeDebugResources-39:/layout/activity_login.xml",
-        "source": "com.example.user-main-42:/layout/activity_login.xml"
+        "merged": "com.example.user-mergeDebugResources-44:/layout/activity_messages.xml",
+        "source": "com.example.user-main-47:/layout/activity_messages.xml"
     }
 ]

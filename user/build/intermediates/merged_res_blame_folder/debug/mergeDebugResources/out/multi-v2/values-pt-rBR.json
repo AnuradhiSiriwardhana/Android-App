@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.user-mergeDebugResources-38:/values-pt-rBR/values-pt-rBR.xml",
+            "outputFile": "com.example.user-mergeDebugResources-43:/values-pt-rBR/values-pt-rBR.xml",
             "map": [
                 {
                     "source": "C:\\Users\\anusi\\.gradle\\caches\\8.13\\transforms\\5369b1405725018800a13f0e04d989f3\\transformed\\browser-1.4.0\\res\\values-pt-rBR\\values-pt-rBR.xml",
