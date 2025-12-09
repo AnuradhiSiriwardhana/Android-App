@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -13,6 +14,12 @@
         android:theme="@style/Theme.CarInfoApp"
         tools:targetApi="31">
 
+        <activity
+            android:name=".VehicleDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegistrationHistoryActivity"
+            android:exported="false" />
         <activity
             android:name=".ProfileActivity"
             android:exported="false" />

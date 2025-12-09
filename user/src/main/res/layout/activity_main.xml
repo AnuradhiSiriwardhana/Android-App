@@ -22,6 +22,13 @@
             android:text="Apply for Vehicle Registration"/>
 
         <Button
+            android:id="@+id/myRegistrationsButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="My Registrations" />
+
+        <Button
             android:id="@+id/myMessagesButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,6 +41,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="My Profile" />
+
+        <Button
+            android:id="@+id/logoutButton"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Logout" />
             
     </LinearLayout>
 
