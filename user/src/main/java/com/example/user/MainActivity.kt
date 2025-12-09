@@ -29,25 +29,25 @@ class MainActivity : AppCompatActivity() {
         requestNotificationPermission()
         scheduleExpiryCheckWorker()
 
-        binding.registerButton.setOnClickListener {
+        binding.registerCard.setOnClickListener {
             startActivity(Intent(this, RegistrationActivity::class.java))
         }
 
-        binding.myRegistrationsButton.setOnClickListener { // Added this
+        binding.historyCard.setOnClickListener { 
             startActivity(Intent(this, RegistrationHistoryActivity::class.java))
         }
 
-        binding.myMessagesButton.setOnClickListener {
+        binding.messagesCard.setOnClickListener {
             startActivity(Intent(this, MessagesActivity::class.java))
         }
 
-        binding.myProfileButton.setOnClickListener { 
+        binding.profileCard.setOnClickListener { 
             startActivity(Intent(this, ProfileActivity::class.java))
         }
 
         binding.logoutButton.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
-            WorkManager.getInstance(this).cancelUniqueWork(EXPIRY_CHECK_WORK_NAME) // Cancel the unique work on logout
+            WorkManager.getInstance(this).cancelUniqueWork(EXPIRY_CHECK_WORK_NAME)
             val intent = Intent(this, LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
