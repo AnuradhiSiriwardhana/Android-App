@@ -1,6 +1,5 @@
 package com.example.rmvadmin
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
@@ -12,7 +11,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.rmvadmin.databinding.ActivityDetailBinding
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class DetailActivity : AppCompatActivity() {
 
@@ -60,7 +62,7 @@ class DetailActivity : AppCompatActivity() {
         binding.rejectButton.setOnClickListener {
             showRejectConfirmationDialog()
         }
-        
+
         binding.sendMessageButton.setOnClickListener {
             sendManualMessage()
         }
@@ -70,7 +72,7 @@ class DetailActivity : AppCompatActivity() {
         if (isApproved) {
             binding.approvalStatus.text = "Approved"
             binding.approvalStatus.setTextColor(ContextCompat.getColor(this, R.color.green))
-            binding.actionButtonsLayout.visibility = View.GONE // Hide buttons if already approved
+            binding.actionButtonsLayout.visibility = View.GONE
         } else {
             binding.approvalStatus.text = "Pending Approval"
             binding.approvalStatus.setTextColor(ContextCompat.getColor(this, R.color.blue))
@@ -85,7 +87,7 @@ class DetailActivity : AppCompatActivity() {
                 .addOnSuccessListener {
                     Toast.makeText(this, "Vehicle Approved", Toast.LENGTH_SHORT).show()
                     updateApprovalStatus(true)
-                    sendAutomatedMessage("Your vehicle registration has been approved. Reference Number: $vehicleKey")
+                    sendAutomatedMessage("Your vehicle registration has been approved. Reference Number: $vehicleKey", vehicleData?.userId)
                 }
                 .addOnFailureListener {
                     Toast.makeText(this, "Failed to approve vehicle", Toast.LENGTH_SHORT).show()
@@ -96,24 +98,34 @@ class DetailActivity : AppCompatActivity() {
     private fun showRejectConfirmationDialog() {
         AlertDialog.Builder(this)
             .setTitle("Reject Submission")
-            .setMessage("Are you sure you want to reject and delete this submission?")
+            .setMessage("Are you sure you want to reject this submission?")
             .setPositiveButton("Reject") { _, _ -> rejectVehicle() }
             .setNegativeButton("Cancel", null)
             .show()
     }
 
     private fun rejectVehicle() {
-        vehicleKey?.let {
-            sendAutomatedMessage("Your vehicle registration has been rejected. Please check your details and resubmit. Reference Number: $vehicleKey")
-            val databaseReference = FirebaseDatabase.getInstance().getReference("Vehicle Details").child(it)
-            databaseReference.removeValue()
-                .addOnSuccessListener {
-                    Toast.makeText(this, "Submission Rejected", Toast.LENGTH_SHORT).show()
-                    finish()
+        vehicleKey?.let { key ->
+            val originalRef = FirebaseDatabase.getInstance().getReference("Vehicle Details").child(key)
+            val rejectedRef = FirebaseDatabase.getInstance().getReference("Rejected Vehicles").child(key)
+
+            originalRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val vehicleToReject = snapshot.getValue(VehicleData::class.java)
+                    if (vehicleToReject != null) {
+                        rejectedRef.setValue(vehicleToReject).addOnSuccessListener {
+                            originalRef.removeValue().addOnSuccessListener {
+                                Toast.makeText(this@DetailActivity, "Submission Rejected and moved to history", Toast.LENGTH_SHORT).show()
+                                sendAutomatedMessage("Your vehicle registration has been rejected. Please check your details and resubmit. Reference Number: $key", vehicleData?.userId)
+                                finish()
+                            }
+                        }
+                    }
                 }
-                .addOnFailureListener {
-                    Toast.makeText(this, "Failed to reject submission", Toast.LENGTH_SHORT).show()
+                override fun onCancelled(error: DatabaseError) {
+                    Toast.makeText(this@DetailActivity, "Failed to read data for rejection.", Toast.LENGTH_SHORT).show()
                 }
+            })
         }
     }
 
@@ -123,28 +135,23 @@ class DetailActivity : AppCompatActivity() {
             Toast.makeText(this, "Please enter a message", Toast.LENGTH_SHORT).show()
             return
         }
-        sendAutomatedMessage(message) // Re-use the same message sending logic
+        sendAutomatedMessage(message, vehicleData?.userId)
         binding.messageEditText.text?.clear()
     }
     
-    private fun sendAutomatedMessage(message: String) {
-        val userId = vehicleData?.userId
-        if (userId == null) {
-            Toast.makeText(this, "Cannot send message: User ID is missing", Toast.LENGTH_SHORT).show()
-            return
-        }
+    private fun sendAutomatedMessage(message: String, userId: String?) {
+        if (userId == null) return
 
-        val databaseReference = FirebaseDatabase.getInstance().getReference("messages").child(userId)
-        val messageId = databaseReference.push().key!!
-        
+        val messagesRef = FirebaseDatabase.getInstance().getReference("messages").child(userId)
+        val messageId = messagesRef.push().key!!
         val messageData = mapOf("message" to message, "timestamp" to System.currentTimeMillis())
 
-        databaseReference.child(messageId).setValue(messageData)
+        messagesRef.child(messageId).setValue(messageData)
             .addOnSuccessListener { 
                 Toast.makeText(this, "Message sent successfully", Toast.LENGTH_SHORT).show()
-             }
+            }
             .addOnFailureListener { 
                 Toast.makeText(this, "Failed to send message", Toast.LENGTH_SHORT).show()
-             }
+            }
     }
 }

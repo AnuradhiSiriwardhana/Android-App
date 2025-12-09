@@ -21,5 +21,9 @@ class MainActivity : AppCompatActivity() {
         binding.myMessagesButton.setOnClickListener {
             startActivity(Intent(this, MessagesActivity::class.java))
         }
+
+        binding.myProfileButton.setOnClickListener { 
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
     }
 }

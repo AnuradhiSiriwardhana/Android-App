@@ -30,6 +30,10 @@ class MainActivity : AppCompatActivity(), VehicleAdapter.OnItemClickListener {
             val intent = Intent(this, UploadActivity::class.java)
             startActivity(intent)
         }
+        
+        binding.rejectedHistoryButton.setOnClickListener {
+            startActivity(Intent(this, RejectedHistoryActivity::class.java))
+        }
 
         fetchVehicleData()
     }
