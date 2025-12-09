@@ -11,12 +11,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:text="Welcome"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/logoutButton"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:text="Logout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/welcomeTextView"
+        app:layout_constraintBottom_toBottomOf="@+id/welcomeTextView" />
 
     <GridLayout
         android:layout_width="0dp"
@@ -24,7 +35,7 @@
         android:layout_marginTop="24dp"
         android:columnCount="2"
         android:rowCount="2"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeTextView"
+        app:layout_constraintTop_toBottomOf="@id/welcomeTextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -37,6 +48,7 @@
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:layout_margin="16dp"
+            app:cardBackgroundColor="@color/card_color_1"
             app:cardCornerRadius="16dp"
             app:cardElevation="8dp">
 
@@ -55,6 +67,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:textColor="@android:color/white"
                     android:text="Apply for Registration" />
 
             </LinearLayout>
@@ -69,6 +82,7 @@
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:layout_margin="16dp"
+            app:cardBackgroundColor="@color/card_color_2"
             app:cardCornerRadius="16dp"
             app:cardElevation="8dp">
 
@@ -87,6 +101,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:textColor="@android:color/white"
                     android:text="My Registrations" />
 
             </LinearLayout>
@@ -101,6 +116,7 @@
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:layout_margin="16dp"
+            app:cardBackgroundColor="@color/card_color_3"
             app:cardCornerRadius="16dp"
             app:cardElevation="8dp">
 
@@ -119,6 +135,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:textColor="@android:color/white"
                     android:text="My Messages" />
 
             </LinearLayout>
@@ -133,6 +150,7 @@
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:layout_margin="16dp"
+            app:cardBackgroundColor="@color/card_color_4"
             app:cardCornerRadius="16dp"
             app:cardElevation="8dp">
 
@@ -151,6 +169,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:textColor="@android:color/white"
                     android:text="My Profile" />
 
             </LinearLayout>
@@ -158,16 +177,5 @@
         </androidx.cardview.widget.CardView>
 
     </GridLayout>
-
-    <Button
-        android:id="@+id/logoutButton"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="24dp"
-        android:text="Logout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,14 +42,19 @@ class VehicleHistoryAdapter(private var vehicleList: List<VehicleData>, private 
             binding.tvVehicleNumber.text = vehicle.vehicleNumber
             binding.tvOwnerName.text = vehicle.ownerName
 
-            if (vehicle.isApproved) {
-                binding.tvApprovalStatus.text = "Approved"
-                val greenColor = ContextCompat.getColor(itemView.context, R.color.green)
-                binding.tvApprovalStatus.background.setTint(greenColor)
-            } else {
-                binding.tvApprovalStatus.text = "Pending Approval"
-                val blueColor = ContextCompat.getColor(itemView.context, R.color.blue)
-                binding.tvApprovalStatus.background.setTint(blueColor)
+            when {
+                vehicle.isApproved -> {
+                    binding.tvApprovalStatus.text = "Approved"
+                    val approvedColor = ContextCompat.getColor(itemView.context, R.color.status_approved)
+                    binding.tvApprovalStatus.background.setTint(approvedColor)
+                }
+                // This assumes a rejected vehicle is removed from the "Vehicle Details" node.
+                // If you have a specific "isRejected" flag, you would check it here.
+                else -> {
+                    binding.tvApprovalStatus.text = "Pending Approval"
+                    val pendingColor = ContextCompat.getColor(itemView.context, R.color.status_pending)
+                    binding.tvApprovalStatus.background.setTint(pendingColor)
+                }
             }
         }
     }

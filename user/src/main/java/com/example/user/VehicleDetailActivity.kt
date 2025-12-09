@@ -37,10 +37,10 @@ class VehicleDetailActivity : AppCompatActivity() {
 
             if (it.isApproved) {
                 binding.approvalStatus.text = "Approved"
-                binding.approvalStatus.setTextColor(ContextCompat.getColor(this, R.color.green))
+                binding.approvalStatus.setTextColor(ContextCompat.getColor(this, R.color.status_approved))
             } else {
                 binding.approvalStatus.text = "Pending Approval"
-                binding.approvalStatus.setTextColor(ContextCompat.getColor(this, R.color.blue))
+                binding.approvalStatus.setTextColor(ContextCompat.getColor(this, R.color.status_pending))
             }
 
             Glide.with(this).load(it.licensePhotoUrl).into(binding.detailLicensePhoto)
