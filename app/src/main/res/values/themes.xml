@@ -1,14 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.CarInfoApp" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <item name="colorPrimary">@color/green</item>
-        <item name="colorPrimaryVariant">@color/green</item>
-        <item name="android:statusBarColor">@color/green</item>
-
-
-
-    </style>
-
-    <style name="Theme.CarInfoApp" parent="Base.Theme.CarInfoApp" />
+  <!-- Base application theme for the Police App -->
+  <style name="Theme.CarInfoApp.PoliceApp" parent="Theme.Material3.DayNight.NoActionBar">
+    <!-- Customize your theme here. -->
+  </style>
 </resources>
