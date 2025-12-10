@@ -13,10 +13,11 @@
     <color name="status_pending">#FF8F00</color>  <!-- Amber/Orange -->
     <color name="status_rejected">#C62828</color> <!-- Rich Red -->
 
-    <!-- New Professional Dashboard Card Colors -->
+    <!-- Professional Dashboard Card Colors -->
     <color name="card_color_1">#1E88E5</color> <!-- Strong Blue -->
     <color name="card_color_2">#43A047</color> <!-- Strong Green -->
     <color name="card_color_3">#F4511E</color> <!-- Strong Orange -->
     <color name="card_color_4">#8E24AA</color> <!-- Strong Purple -->
+    <color name="card_color_5">#00897B</color> <!-- Strong Teal -->
 
 </resources>

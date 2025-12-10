@@ -44,6 +44,10 @@ class MainActivity : AppCompatActivity() {
         binding.profileCard.setOnClickListener { 
             startActivity(Intent(this, ProfileActivity::class.java))
         }
+        
+        binding.feedbackCard.setOnClickListener { 
+            startActivity(Intent(this, SurveyActivity::class.java))
+        }
 
         binding.logoutButton.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
