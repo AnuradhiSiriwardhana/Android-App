@@ -3,6 +3,8 @@ package com.example.rmvadmin
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +24,8 @@ class MainActivity : AppCompatActivity(), VehicleAdapter.OnItemClickListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.toolbar)
+
         database = FirebaseDatabase.getInstance().getReference("Vehicle Details")
 
         setupRecyclerView()
@@ -30,12 +34,27 @@ class MainActivity : AppCompatActivity(), VehicleAdapter.OnItemClickListener {
             val intent = Intent(this, UploadActivity::class.java)
             startActivity(intent)
         }
-        
-        binding.rejectedHistoryButton.setOnClickListener {
-            startActivity(Intent(this, RejectedHistoryActivity::class.java))
-        }
 
         fetchVehicleData()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_rejected_history -> {
+                startActivity(Intent(this, RejectedHistoryActivity::class.java))
+                true
+            }
+            R.id.action_feedback -> {
+                startActivity(Intent(this, SurveyActivity::class.java))
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun setupRecyclerView() {

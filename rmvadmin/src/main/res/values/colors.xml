@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <!-- Primary and Variant Colors -->
+    <color name="colorPrimary">#1565C0</color> <!-- A strong, professional blue -->
+    <color name="colorPrimaryVariant">#003C8F</color> <!-- A darker shade for the status bar -->
+    <color name="colorOnPrimary">#FFFFFF</color> <!-- White text/icons on primary color -->
+    
+    <!-- Accent Color for FAB -->
+    <color name="colorAccent">#FFA000</color> <!-- An amber/orange for contrast -->
+
+    <!-- Standard Colors -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="green">#FF008000</color>
-    <color name="blue">#FF0000FF</color>
+
+    <!-- Status Colors -->
+    <color name="green">#2E7D32</color>
+    <color name="blue">#1565C0</color>
+
 </resources>
